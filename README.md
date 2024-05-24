@@ -1,6 +1,6 @@
 ## All the data/images that are used to train this model lies in this zip.
 
-[data.rar](https://github.com/KaSaNaa/RetroSpectra/blob/main/data.rar)
+### [imageDataSet.rar](https://github.com/KaSaNaa/RetroSpectra/blob/main/imagesDataSet.rar)
 
 # How to run
 
