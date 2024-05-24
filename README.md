@@ -1,3 +1,7 @@
+## All the data/images that are used to train this model lies in this zip.
+
+[data.rar](https://github.com/KaSaNaa/RetroSpectra/blob/main/data.rar)
+
 # How to run
 
 Follow these steps to set up and run the project:
