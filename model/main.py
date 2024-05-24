@@ -5,8 +5,8 @@ from keras.layers import Conv2D,MaxPooling2D
 import os
 
 
-train_data_dir='data/train/'
-validation_data_dir='data/test/'
+train_data_dir='../data/train/'
+validation_data_dir='../data/test/'
 
 
 train_datagen = ImageDataGenerator(
