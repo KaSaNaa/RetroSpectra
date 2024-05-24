@@ -8,7 +8,7 @@ video=cv2.VideoCapture(0)
 
 faceDetect=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-labels_dict={0:'Angry',1:'Disgust', 2:'Fear', 3:'Happy',4:'Neutral',5:'Sad',6:'Surprise'}
+labels_dict={0:'Angry',1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Surprise'}
 
 while True:
     ret,frame=video.read()
