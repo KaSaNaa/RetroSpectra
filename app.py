@@ -7,13 +7,18 @@ from tensorflow.keras.models import load_model # type: ignore
 app = Flask(__name__)
 CORS(app)
 
+# load the model and the face cascade
 model = load_model('model_file_30epochs.h5')
 faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 labels_dict = {0: 'Angry', 1: 'Disgust', 2: 'Fear', 3: 'Happy', 4: 'Neutral', 5: 'Sad', 6: 'Surprise'}
 
 def process_frame(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    
+    # detect faces in the frame
     faces = faceCascade.detectMultiScale(gray, 1.3, 5)
+    
+    # iterate over the faces and predict the emotion
     for (x, y, w, h) in faces:
         roi_gray = gray[y:y+h, x:x+w]
         resized = cv2.resize(roi_gray, (48, 48))
