@@ -8,7 +8,7 @@ import os
 train_data_dir='../data/train/'
 validation_data_dir='../data/test/'
 
-
+# data preprocessing and augmentation
 train_datagen = ImageDataGenerator(
 					rescale=1./255,
 					rotation_range=30,
@@ -17,8 +17,10 @@ train_datagen = ImageDataGenerator(
 					horizontal_flip=True,
 					fill_mode='nearest')
 
+# only rescaling for validation data
 validation_datagen = ImageDataGenerator(rescale=1./255)
 
+# generate and store training and validation data
 train_generator = train_datagen.flow_from_directory(
 					train_data_dir,
 					color_mode='grayscale',
@@ -43,26 +45,33 @@ img, label = train_generator.__next__()
 
 model = Sequential()
 
+# 1st convolution layer
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(48,48,1)))
 
+# 1st pooling layer
 model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.1))
 
+# 2nd convolution layer
 model.add(Conv2D(128, kernel_size=(3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.1))
 
+# 3rd convolution layer
 model.add(Conv2D(256, kernel_size=(3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.1))
 
+# flatten and feed to fully connected layer
 model.add(Flatten())
 model.add(Dense(512, activation='relu'))
 model.add(Dropout(0.2))
 
+# output layer
 model.add(Dense(7, activation='softmax'))
 
+# compile the model
 model.compile(optimizer = 'adam', loss='categorical_crossentropy', metrics=['accuracy'])
 print(model.summary())
 
