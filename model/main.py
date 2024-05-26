@@ -1,7 +1,16 @@
+# Description: This file contains the code to train the model using the dataset.
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+# import the necessary packages
 from tensorflow.keras.models import Sequential
+
+# import the necessary layers
 from keras.layers import Dense,Dropout,Flatten
+
+# import the necessary layers
 from keras.layers import Conv2D,MaxPooling2D
+
+# import the necessary layers
 import os
 
 
